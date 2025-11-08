@@ -17,14 +17,23 @@ function toRomanLazy(num) { // 6
   // iterate over romanNumeralPriorityOrder
   let romanNumArray = []
   for (let letter of romanNumeralPriorityOrder) {
-    romanNumeralToArabic[letter] // access the value of M 
+    console.log(romanNumeralToArabic[letter]) // access the value of M 
     let romanModArabic = (num % romanNumeralToArabic[letter]) // 6 % 1000 do something with the remainder to repeat the letter if div by 10
-    
-    console.log(`This is the romanModArabic ${romanModArabic}`)
+    let numberOfRepeats = (Math.floor(num / romanNumeralToArabic[letter]))
+    // console.log(`This is the number of repeats ${numberOfRepeats}`)
+    // console.log(`This is the romanModArabic ${romanModArabic}`)
     if (romanModArabic === 0) {
-      // romanNumArray.push(letter)
-      console.log(`This is the push ${romanNumArray.push(letter)}`)
+      
+      // num - the value of the key letter
+      console.log(`The value of num is ${num} The value of ${letter} is ${romanNumeralToArabic[letter]}`)
+      romanNumArray.push(letter)
+      num = num - romanNumeralToArabic[letter]
+
+      console.log(`The value of num after is ${num} The value of ${letter} is ${romanNumeralToArabic[letter]}`)
+
       console.log(`This is the romanNumArray ${romanNumArray}`)
+      let theRepeat = letter.repeat(numberOfRepeats)
+      console.log(romanNumArray.push(theRepeat))
       break
     } else if (romanModArabic != num) { // if not equal to 6, push to numArray
         romanNumArray.push(letter)  
@@ -34,9 +43,9 @@ function toRomanLazy(num) { // 6
 
   return output;
 }
-// console.log(toRomanLazy(6)) // should return VI
+console.log(toRomanLazy(6)) // should return VI
 // console.log(toRomanLazy(10)) // should return X
-console.log(toRomanLazy(20)) // should return XX
+// console.log(toRomanLazy(20)) // should return XX
 // console.log(toRomanLazy(26)) // should return XXVI
 function toRoman(num) {
   return "";
