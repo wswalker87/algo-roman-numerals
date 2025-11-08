@@ -15,26 +15,29 @@ function toRomanLazy(num) { // 6
   // variable that has an array with numerals in descending order
   let romanNumeralPriorityOrder = ['M', 'D', 'C', 'L', 'X', 'V', 'I']
   // iterate over romanNumeralPriorityOrder
-
-  for (letter in romanNumeralPriorityOrder) {
-    romanNumeralToArabic[6] // access the value of M
-    console.log(romanNumeralToArabic[6])
+  let romanNumArray = []
+  for (let letter of romanNumeralPriorityOrder) {
+    romanNumeralToArabic[letter] // access the value of M 
+    let romanModArabic = (num % romanNumeralToArabic[letter]) // 6 % 1000 do something with the remainder to repeat the letter if div by 10
+    
+    console.log(`This is the romanModArabic ${romanModArabic}`)
+    if (romanModArabic === 0) {
+      // romanNumArray.push(letter)
+      console.log(`This is the push ${romanNumArray.push(letter)}`)
+      console.log(`This is the romanNumArray ${romanNumArray}`)
+      break
+    } else if (romanModArabic != num) { // if not equal to 6, push to numArray
+        romanNumArray.push(letter)  
+    }
+    output = romanNumArray.join('')
   }
 
-  // Math.floor with a modulus, output vatiable  that has a repeat of the quotient
-      //find the key {
-      //key is 6
-      //can key (6) be divided by, M, D, ....I
-      //6 % 5 = 1 remainder of 1 == V
-      //1 = I} ===I
-      //romanNumArray = romanNumArray.push(letter)
-  // take the remainger and iterate until num === 0
-
-  // return output as string 
-    //romanNumArray.join("")
-  return "";
+  return output;
 }
-
+// console.log(toRomanLazy(6)) // should return VI
+// console.log(toRomanLazy(10)) // should return X
+console.log(toRomanLazy(20)) // should return XX
+// console.log(toRomanLazy(26)) // should return XXVI
 function toRoman(num) {
   return "";
 }
